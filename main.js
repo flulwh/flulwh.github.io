@@ -23,6 +23,18 @@ const LANG_COLOR = {
   Lua: "#2c5aa0",
 };
 
+// 已上线官网的项目；其余项目回落到 GitHub 仓库主页。
+const SITES = {
+  folio: "https://flulwh.github.io/folio/",
+};
+
+function siteOf(repo) {
+  if (SITES[repo.name]) return SITES[repo.name];
+  const homepage = (repo.homepage || "").trim();
+  if (homepage && homepage !== repo.html_url) return homepage;
+  return repo.html_url;
+}
+
 const $ = (sel, root = document) => root.querySelector(sel);
 const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
 
@@ -56,6 +68,7 @@ function normalizeRepos(list) {
       name: r.name,
       description: r.description || "",
       html_url: r.html_url,
+      homepage: r.homepage || "",
       language: r.language || "",
       stars: r.stargazers_count || 0,
       pushed_at: r.pushed_at || "",
@@ -99,33 +112,48 @@ function el(tag, className, text) {
 
 function buildRow(repo, index) {
   const li = el("li", "repo");
-  const link = el("a", "repo__link");
-  link.href = repo.html_url;
-  link.target = "_blank";
-  link.rel = "noopener";
+  const site = siteOf(repo);
+  const hasSite = site !== repo.html_url;
 
-  link.append(el("span", "repo__no", String(index + 1).padStart(2, "0")));
+  const main = el("a", "repo__main");
+  main.href = site;
+  main.target = "_blank";
+  main.rel = "noopener";
+  main.setAttribute("aria-label", `${repo.name} 的${hasSite ? "官网" : "仓库"}（新窗口打开）`);
+  li.append(main);
+
+  li.append(el("span", "repo__no", String(index + 1).padStart(2, "0")));
 
   const name = el("span", "repo__name");
   name.append(document.createTextNode(repo.name));
   if (repo.fork) name.append(el("span", "repo__tag", "fork"));
   else if (repo.archived) name.append(el("span", "repo__tag", "archived"));
-  link.append(name);
+  li.append(name);
 
-  link.append(el("span", "repo__desc", repo.description || "暂无描述"));
+  li.append(el("span", "repo__desc", repo.description || "暂无描述"));
 
   const lang = el("span", "repo__lang");
   const dot = el("i", "lang-dot");
   dot.style.background = LANG_COLOR[repo.language] || "var(--ink-3)";
   lang.append(dot, document.createTextNode(repo.language || "—"));
-  link.append(lang);
+  li.append(lang);
 
   const stars = el("span", "repo__stars" + (repo.stars ? "" : " is-empty"), `★ ${repo.stars}`);
-  link.append(stars);
+  li.append(stars);
 
-  link.append(el("span", "repo__time", relativeTime(repo.pushed_at)));
-  link.append(el("span", "repo__arr", "↗"));
-  li.append(link);
+  li.append(el("span", "repo__time", relativeTime(repo.pushed_at)));
+
+  if (hasSite) {
+    const src = el("a", "repo__src", "源码 ↗");
+    src.href = repo.html_url;
+    src.target = "_blank";
+    src.rel = "noopener";
+    src.setAttribute("aria-label", `${repo.name} 的 GitHub 仓库`);
+    li.append(src);
+  } else {
+    li.append(el("span", "repo__lead", "↗"));
+  }
+
   return li;
 }
 
