@@ -288,6 +288,86 @@ function initParallax() {
   update();
 }
 
+function initChrome() {
+  const clock = $("[data-clock]");
+  if (clock) {
+    const fmt = new Intl.DateTimeFormat("en-GB", {
+      timeZone: "Asia/Shanghai",
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: false,
+    });
+    const tick = () => {
+      clock.textContent = fmt.format(new Date());
+    };
+    tick();
+    setInterval(tick, 30000);
+  }
+
+  const rail = $("#rail");
+  const bar = $("[data-progress]");
+  if (rail && bar) {
+    let ticking = false;
+    const update = () => {
+      const y = window.scrollY;
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      rail.classList.toggle("is-stuck", y > 12);
+      rail.style.setProperty("--read", max > 0 ? (y / max).toFixed(4) : "0");
+      ticking = false;
+    };
+    const onScroll = () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(update);
+      }
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll, { passive: true });
+    update();
+  }
+
+  const cursor = $("[data-cursor]");
+  const cursorLabel = $("[data-cursor-label]");
+  if (!cursor || !cursorLabel) return;
+  if (!matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  let shown = false;
+  let frame = 0;
+  let px = 0;
+  let py = 0;
+
+  const move = () => {
+    frame = 0;
+    cursor.style.transform = `translate3d(${px + 16}px, ${py + 16}px, 0)`;
+  };
+
+  document.addEventListener(
+    "pointermove",
+    (event) => {
+      const target = event.target instanceof Element ? event.target : null;
+      if (!target) return;
+      px = event.clientX;
+      py = event.clientY;
+      if (!frame) frame = requestAnimationFrame(move);
+
+      const row = target.closest(".repo");
+      const active = Boolean(row);
+      if (active !== shown) {
+        shown = active;
+        cursor.classList.toggle("is-on", active);
+      }
+      if (row) cursorLabel.textContent = target.closest(".repo__src") ? "Source" : "Open";
+    },
+    { passive: true }
+  );
+
+  document.addEventListener("pointerleave", () => {
+    shown = false;
+    cursor.classList.remove("is-on");
+  });
+}
+
 /* ---------- boot ---------- */
 
 const refreshBtn = $("[data-refresh]");
@@ -295,6 +375,7 @@ if (refreshBtn) refreshBtn.addEventListener("click", () => load(true));
 
 initReveal();
 initParallax();
+initChrome();
 load();
 
 // 页面重新可见且缓存过期时，静默再取一次

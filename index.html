@@ -6,57 +6,74 @@
 <title>flulwh — 把想法做成能用的东西</title>
 <meta name="description" content="flulwh 的个人项目档案：Folio 双端阅读器、Material You 启动器与若干小工具。项目列表直接读取 GitHub。">
 <meta name="theme-color" content="#efeade">
+<script>document.documentElement.classList.add('js');</script>
 <meta property="og:type" content="website">
 <meta property="og:title" content="flulwh — 把想法做成能用的东西">
 <meta property="og:description" content="独立开发者的项目档案，仓库列表自动同步自 GitHub。">
 <meta property="og:image" content="./assets/folio-shelf.png">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%2314110c'/%3E%3Ctext x='32' y='46' font-family='Georgia,serif' font-size='40' fill='%23efeade' text-anchor='middle'%3Ef%3C/text%3E%3C/svg%3E">
 <link rel="preload" href="./fonts/bodoni-moda-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="./fonts/bodoni-moda-400-italic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="./fonts/plex-mono-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="./styles.css">
 <script src="./main.js" defer></script>
 </head>
 <body>
 <a class="skip" href="#index">跳到项目索引</a>
+<div class="cursor" data-cursor aria-hidden="true"><span data-cursor-label>Open</span></div>
 
-<header class="rail">
+<header class="rail" id="rail">
   <a class="rail__mark" href="#top">flulwh<span>.</span></a>
+  <p class="rail__clock"><i aria-hidden="true"></i>Shanghai <b data-clock>—</b></p>
   <nav class="rail__nav" aria-label="页面导航">
     <a href="#folio">主项目</a>
     <a href="#index">索引</a>
     <a href="#practice">方式</a>
+    <a href="#contact">联系</a>
   </nav>
   <a class="rail__link" href="https://github.com/flulwh" target="_blank" rel="noopener">GitHub<span aria-hidden="true">↗</span></a>
+  <span class="rail__bar" data-progress aria-hidden="true"></span>
 </header>
 
 <main id="top">
 
   <section class="hero" aria-labelledby="hero-title">
-    <div class="hero__glow" aria-hidden="true"></div>
-    <div class="hero__inner">
-      <p class="eyebrow" data-in style="--d:0ms"><span class="eyebrow__dot" aria-hidden="true"></span>Personal index / 档案 001 / 2026</p>
-      <h1 class="wordmark" id="hero-title" data-in style="--d:70ms">flulwh<span class="wordmark__dot" aria-hidden="true">.</span></h1>
-      <p class="hero__lede" data-in style="--d:170ms">把想法做成能用的东西。</p>
-      <p class="hero__sub" data-in style="--d:260ms">独立开发者。做阅读器、启动器，和一些让日常更顺手的小工具。</p>
-      <div class="hero__actions" data-in style="--d:340ms">
-        <a class="btn btn--ink" href="#index">项目索引<span class="btn__arr" aria-hidden="true">↓</span></a>
-        <a class="btn btn--line" href="https://github.com/flulwh" target="_blank" rel="noopener">GitHub<span class="btn__arr" aria-hidden="true">↗</span></a>
+    <p class="hero__side" aria-hidden="true">Portfolio — 001 / 2026</p>
+    <div class="shell hero__grid">
+      <div class="hero__copy">
+        <p class="eyebrow" data-in style="--d:0ms"><span class="eyebrow__dot" aria-hidden="true"></span>Personal index / 档案 001 / 2026</p>
+        <h1 class="wordmark" id="hero-title" aria-label="flulwh">
+          <span style="--i:0">f</span><span style="--i:1">l</span><span style="--i:2">u</span><span style="--i:3">l</span><span style="--i:4">w</span><span style="--i:5">h</span><span class="wordmark__dot" style="--i:6">.</span>
+        </h1>
+        <p class="hero__lede" data-in style="--d:230ms">把想法做成<br /><em>能用的东西。</em></p>
+        <p class="hero__sub" data-in style="--d:320ms">独立开发者。做阅读器、启动器，和一些让日常更顺手的小工具。</p>
+        <div class="hero__actions" data-in style="--d:400ms">
+          <a class="btn btn--ink" href="#index">项目索引<span class="btn__arr" aria-hidden="true">↓</span></a>
+          <a class="btn btn--line" href="https://github.com/flulwh" target="_blank" rel="noopener">GitHub<span class="btn__arr" aria-hidden="true">↗</span></a>
+        </div>
+        <dl class="hero__meta" data-in style="--d:480ms">
+          <div><dt>公开仓库</dt><dd data-repo-count>—</dd></div>
+          <div><dt>最近同步</dt><dd data-sync-time>—</dd></div>
+          <div><dt>状态</dt><dd>持续更新</dd></div>
+        </dl>
       </div>
-      <dl class="hero__meta" data-in style="--d:420ms">
-        <div><dt>公开仓库</dt><dd data-repo-count>—</dd></div>
-        <div><dt>最近同步</dt><dd data-sync-time>—</dd></div>
-        <div><dt>状态</dt><dd>持续更新</dd></div>
-      </dl>
+
+      <figure class="hero__plate" data-parallax="0.06">
+        <span class="hero__seal" aria-hidden="true"><span>Index</span><b>2026</b><span>Folio</span></span>
+        <div class="plate__mat">
+          <img src="./assets/folio-shelf.png" width="1024" height="600" alt="Folio 桌面端书架界面：正在阅读的《山居手记》与六本带渐变封面的书">
+        </div>
+        <figure class="hero__phone">
+          <img src="./assets/folio-android.png" width="1080" height="2160" alt="Folio 安卓端阅读界面" loading="lazy">
+        </figure>
+        <figcaption><span>Fig. 01</span>Folio / 书架 · 实际截图</figcaption>
+      </figure>
     </div>
 
-    <figure class="hero__plate" data-parallax="0.06">
-      <img src="./assets/folio-shelf.png" width="1024" height="600" alt="Folio 桌面端书架界面：正在阅读的《山居手记》与六本带渐变封面的书">
-      <figcaption><span>Fig. 01</span>Folio / 书架</figcaption>
-    </figure>
-
-    <div class="hero__foot" aria-hidden="true">
+    <div class="shell hero__foot">
       <span>Scroll · 向下</span>
-      <span class="hero__line"></span>
+      <span class="hero__line" aria-hidden="true"></span>
+      <span>Shanghai / CN</span>
     </div>
   </section>
 
@@ -67,36 +84,49 @@
     </div>
   </div>
 
-  <section class="feature" id="folio" aria-labelledby="folio-title">
+  <section class="feature shell" id="folio" aria-labelledby="folio-title">
     <div class="feature__head reveal">
-      <p class="eyebrow">01 — 正在做</p>
-      <h2 class="sec-title" id="folio-title">Folio</h2>
+      <p class="eyebrow">01 — 正在做 / Selected work</p>
+      <h2 class="feature__name" id="folio-title">Folio</h2>
+      <p class="feature__tag">本地优先的双端阅读器</p>
     </div>
 
     <div class="feature__body reveal">
-      <p class="feature__lead">极简沉浸式电子书阅读器。桌面端 Electron + React，安卓端 Kotlin + Compose，同一本书的进度与痕迹在局域网里自动对齐。</p>
+      <p class="feature__lead">极简沉浸式电子书阅读器。桌面端 Electron + React，安卓端 Kotlin + Compose；同一本书的进度、书签与阅读痕迹，在局域网里自动对齐。</p>
       <dl class="spec">
-        <div><dt>形态</dt><dd>桌面 / 安卓</dd></div>
+        <div><dt>形态</dt><dd>Windows / Android</dd></div>
         <div><dt>技术</dt><dd>Electron · React · Kotlin · Compose</dd></div>
-        <div><dt>状态</dt><dd>持续更新</dd></div>
+        <div><dt>状态</dt><dd>持续更新 · MIT</dd></div>
         <div><dt>仓库</dt><dd><a class="ulink" href="https://github.com/flulwh/folio" target="_blank" rel="noopener">github.com/flulwh/folio<span aria-hidden="true">↗</span></a></dd></div>
       </dl>
+      <div class="feature__acts">
+        <a class="btn btn--ink" href="https://flulwh.github.io/folio/" target="_blank" rel="noopener">访问官网<span class="btn__arr" aria-hidden="true">↗</span></a>
+        <a class="ulink" href="https://github.com/flulwh/folio/releases" target="_blank" rel="noopener">下载最新版本<span aria-hidden="true">↗</span></a>
+      </div>
     </div>
 
     <figure class="feature__plate reveal" data-parallax="0.1">
-      <img src="./assets/folio-night.png" width="1024" height="600" loading="lazy" alt="Folio 夜间阅读界面：深色纸面上排着《山居手记》的章节正文">
+      <div class="plate__mat">
+        <img src="./assets/folio-night.png" width="1024" height="600" loading="lazy" alt="Folio 夜间阅读界面：深色纸面上排着《山居手记》的章节正文">
+      </div>
       <figcaption><span>Fig. 02</span>夜间阅读 / 沉浸模式</figcaption>
     </figure>
+
+    <ul class="feature__points">
+      <li class="reveal"><span>01</span><b>本地优先</b><p>书在磁盘上，索引在本地。断网、关服务器，都不影响接着读。</p></li>
+      <li class="reveal"><span>02</span><b>双端独立</b><p>安卓端不是遥控器，没有桌面端也能导入、阅读、做笔记。</p></li>
+      <li class="reveal"><span>03</span><b>局域网同步</b><p>同一个 Wi-Fi 下交换进度，数据不经过任何第三方服务器。</p></li>
+    </ul>
   </section>
 
-  <section class="index" id="index" aria-labelledby="index-title">
+  <section class="index shell" id="index" aria-labelledby="index-title">
     <div class="index__head reveal">
       <div>
-        <p class="eyebrow">02 — 索引</p>
+        <p class="eyebrow">02 — 索引 / Index</p>
         <h2 class="sec-title" id="index-title">所有项目</h2>
       </div>
       <div class="index__aside">
-        <p class="index__note">下面这份清单直接读取 GitHub，新仓库建好之后，打开页面就会自己长出来。</p>
+        <p class="index__note">下面这份清单直接读取 GitHub。新仓库建好之后，打开页面就会自己长出来。</p>
         <div class="syncbar">
           <span class="syncbar__time">最近同步 <b data-sync-time>—</b></span>
           <button class="syncbar__btn" type="button" data-refresh>刷新<span aria-hidden="true">↻</span></button>
@@ -104,44 +134,49 @@
       </div>
     </div>
 
+    <div class="repos__head" aria-hidden="true">
+      <span>No.</span><span>Project</span><span>Note</span><span>Stack</span><span>Stars</span><span>Updated</span><span></span>
+    </div>
     <ol class="repos" data-repos aria-live="polite" aria-busy="true">
-      <li class="repo repo--skeleton"><span></span><span></span><span></span></li>
-      <li class="repo repo--skeleton"><span></span><span></span><span></span></li>
-      <li class="repo repo--skeleton"><span></span><span></span><span></span></li>
+      <li class="repo repo--skeleton"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></li>
+      <li class="repo repo--skeleton"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></li>
+      <li class="repo repo--skeleton"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></li>
     </ol>
     <p class="repos__empty" data-repos-empty hidden>暂时取不到仓库列表，稍后再试。</p>
   </section>
 
-  <section class="practice" id="practice" aria-labelledby="practice-title">
+  <section class="practice shell" id="practice" aria-labelledby="practice-title">
     <div class="practice__head reveal">
-      <p class="eyebrow">03 — 方式</p>
+      <p class="eyebrow">03 — 方式 / Practice</p>
       <h2 class="sec-title" id="practice-title">做东西的三条原则</h2>
+      <p class="practice__note">不追热点，不堆功能。每一件东西都要能被真正用起来。</p>
     </div>
-    <dl class="tenets">
-      <div class="tenet reveal">
-        <dt><span class="tenet__no">i</span><span>先能用，再好用</span></dt>
-        <dd>每一版都留下一个能跑起来的东西，打磨放在它之后。</dd>
-      </div>
-      <div class="tenet reveal">
-        <dt><span class="tenet__no">ii</span><span>本地优先</span></dt>
-        <dd>数据留在自己的机器上，能走局域网就不绕服务器。</dd>
-      </div>
-      <div class="tenet reveal">
-        <dt><span class="tenet__no">iii</span><span>少而完整</span></dt>
-        <dd>宁可少做一个功能，也不留一个半成品。</dd>
-      </div>
-    </dl>
+    <div class="tenets">
+      <article class="tenet reveal">
+        <span class="tenet__no" aria-hidden="true">i</span>
+        <div><h3>先能用，再好用</h3><p>每一版都留下一个能跑起来的东西，打磨放在它之后。</p></div>
+      </article>
+      <article class="tenet reveal">
+        <span class="tenet__no" aria-hidden="true">ii</span>
+        <div><h3>本地优先</h3><p>数据留在自己的机器上，能走局域网就不绕服务器。</p></div>
+      </article>
+      <article class="tenet reveal">
+        <span class="tenet__no" aria-hidden="true">iii</span>
+        <div><h3>少而完整</h3><p>宁可少做一个功能，也不留一个半成品。</p></div>
+      </article>
+    </div>
   </section>
 
   <section class="contact" id="contact" aria-labelledby="contact-title">
-    <div class="contact__inner reveal">
-      <p class="eyebrow">04 — 联系</p>
-      <h2 class="contact__title" id="contact-title">有新东西，会先出现在索引里。</h2>
+    <div class="shell contact__inner reveal">
+      <p class="eyebrow">04 — 联系 / Contact</p>
+      <h2 class="contact__title" id="contact-title">有新东西，<br />会先出现在<em>索引</em>里。</h2>
       <p class="contact__sub">想聊阅读器、桌面端，或者只是想催更，都可以直接找我。</p>
+      <a class="contact__mail" href="mailto:weakboy100121@outlook.com">weakboy100121@outlook.com<span aria-hidden="true">↗</span></a>
       <ul class="contact__links">
         <li><a href="https://github.com/flulwh" target="_blank" rel="noopener"><span>GitHub</span>github.com/flulwh<i aria-hidden="true">↗</i></a></li>
-        <li><a href="mailto:weakboy100121@outlook.com"><span>邮箱</span>weakboy100121@outlook.com<i aria-hidden="true">↗</i></a></li>
         <li><a href="https://wpa.qq.com/msgrd?v=3&amp;uin=3586212613&amp;site=qq&amp;menu=yes" target="_blank" rel="noopener"><span>QQ</span>3586212613<i aria-hidden="true">↗</i></a></li>
+        <li><a href="https://flulwh.github.io/folio/" target="_blank" rel="noopener"><span>Folio</span>flulwh.github.io/folio<i aria-hidden="true">↗</i></a></li>
       </ul>
     </div>
     <div class="stamp" aria-hidden="true"><span>FLULWH</span><b>2026</b><span>INDEX</span></div>
@@ -149,9 +184,19 @@
 </main>
 
 <footer class="foot">
-  <span>© 2026 flulwh</span>
-  <span class="foot__mid">静态页面 · 托管于 GitHub Pages</span>
-  <span>数据来自 GitHub API · <b data-sync-time>—</b></span>
+  <div class="shell foot__top">
+    <a class="foot__mark" href="#top">flulwh<span>.</span></a>
+    <p class="foot__note">Set in Bodoni Moda &amp; IBM Plex Mono<br />静态页面 · 托管于 GitHub Pages</p>
+    <nav aria-label="页脚">
+      <a href="https://github.com/flulwh" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://flulwh.github.io/folio/" target="_blank" rel="noopener">Folio</a>
+      <a href="mailto:weakboy100121@outlook.com">Email</a>
+    </nav>
+  </div>
+  <div class="shell foot__bottom">
+    <span>© 2026 flulwh</span>
+    <span>数据来自 GitHub API · <b data-sync-time>—</b></span>
+  </div>
 </footer>
 </body>
 </html>
