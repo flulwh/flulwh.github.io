@@ -1,6 +1,30 @@
 {
-  "syncedAt": "2026-11-21T09:51:05.466Z",
+  "syncedAt": "2026-11-22T09:47:56.388Z",
   "repos": [
+    {
+      "name": "nautilus-mc",
+      "description": "Nautilus — 高性能、可扩展的 Minecraft 服务端 Web 管理面板（FastAPI + React）",
+      "html_url": "https://github.com/flulwh/nautilus-mc",
+      "language": "Python",
+      "stargazers_count": 0,
+      "forks_count": 0,
+      "pushed_at": "2026-11-22T07:18:28Z",
+      "created_at": "2026-11-21T18:19:13Z",
+      "fork": false,
+      "archived": false,
+      "topics": [
+        "admin-panel",
+        "casbin",
+        "fastapi",
+        "fastapi-users",
+        "minecraft",
+        "minecraft-server",
+        "papermc",
+        "react",
+        "self-hosted",
+        "server-management"
+      ]
+    },
     {
       "name": "folio",
       "description": "极简沉浸式电子书阅读器：Electron + React 桌面端 + Kotlin/Compose Android 客户端，局域网同步阅读进度与痕迹",
@@ -8,7 +32,7 @@
       "language": "JavaScript",
       "stargazers_count": 3,
       "forks_count": 0,
-      "pushed_at": "2026-11-21T07:07:24Z",
+      "pushed_at": "2026-11-21T18:28:29Z",
       "created_at": "2026-11-13T05:10:36Z",
       "fork": false,
       "archived": false,
